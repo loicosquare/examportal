@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -20,6 +21,7 @@ public class UserController {
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
 
+        user.setProfile("default.png");
         Set<UserRole> roles = new HashSet<>();
 
         Role role = new Role();
