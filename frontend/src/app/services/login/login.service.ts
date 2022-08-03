@@ -9,14 +9,19 @@ export class LoginService {
 
   constructor(private http : HttpClient) { }
 
+  //get Current user which is loggedIn
+  public getCurrentUser(){
+    return this.http.get(`${baseUrl}/current-user`);
+  }
+
   //Generate Token
   public generateToken(loginData: any){
     return this.http.post(`${baseUrl}/generate-token`, loginData);
   }
 
   //Login user: set tokein in localStorage
-  public loginUser(token : any) : Boolean{
-    localStorage.setItem('token', token);
+  public loginUser(token : string) : Boolean{
+    localStorage.setItem('token', token); /*Ca ne donne pas je dois stringify*/
     return true;
   }
 
@@ -30,7 +35,7 @@ export class LoginService {
     }
   }
 
-  //mogout: Remove token and user from localStorage
+  //logout: Remove token and user from localStorage
   public logout() : boolean {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -39,7 +44,7 @@ export class LoginService {
 
   //get token
   public getToken() : any{
-    return localStorage.getItem('token');
+    return localStorage.getItem('token'); /*Si ca ne passe pas je dois paser*/
   }
 
   //set userDetail
