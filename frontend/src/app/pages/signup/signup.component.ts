@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from '../../services/user/user.service';
 import Swal from 'sweetalert2';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
         console.log(response)
         Swal.fire('Successfully done', 'User '+response.username + ' has id'+ response.id, 'success')
       },
-      error: (err) => this.snack.open(err.message, '', {
+      error: (err:any) => this.snack.open(err.message, '', {
         duration: 2000
       }),
       complete: () => this.snack.open("Crée avec succès", 'Ok', {

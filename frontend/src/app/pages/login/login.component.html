@@ -7,20 +7,25 @@
                         <img src="../../../assets/registerLog.jpg" alt="" style="width: 35%;">
                     </div>
                     <h1 class="mt10 text-center">Login Here</h1>
-                    <form action="">
+                    <form (ngSubmit)="loginUser()">
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Username</mat-label>
                             <input
+                                [(ngModel)]="loginData.username"
+                                name="username"
                                 required
                                 matInput
                                 placeholder="Enter here"
                             >
-                            <mat-hint>Username must be unique!</mat-hint>
+                            <mat-hint>Valid Username</mat-hint>
                         </mat-form-field>
                         
                         <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Username</mat-label>
+                            <mat-label>Password</mat-label>
                             <input
+                                [(ngModel)]="loginData.password"
+                                name="password"
+                                type="password"
                                 required
                                 matInput
                                 placeholder="Enter here"

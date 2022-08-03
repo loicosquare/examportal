@@ -1,8 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { User } from '../interface/User';
-import baseUrl from './helper';
+import baseUrl from '../helper/helper';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public addUser(user: User) /*: /*Observable<User>*/ {
+  public addUser(user: any) /*: /*Observable<User>*/ {
     return this.http.post(`${baseUrl}/user/`, user);
   }
 
