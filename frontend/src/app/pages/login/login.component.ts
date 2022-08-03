@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
       next: (response : any) => {
 
         console.log('success'),
-        console.log(response);
+        console.log(response['token']);
         
         //Login...
-        this.loginService.loginUser(response);
+        this.loginService.loginUser(response['token']);
 
         this.loginService.getCurrentUser().subscribe({
           next: (user: any) => {
