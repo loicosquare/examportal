@@ -1,0 +1,43 @@
+<mat-card *ngIf="user">
+    <h3>Your Profile Details</h3>
+    <mat-card-content>
+        <div class="bootstrat-wrapper">
+            <div class="container">
+                <div class="container text-center">
+                    <img src="../../../assets/default_avatar.png" alt="" class="profile-image">
+                    <h1 class="mt20">{{user.firstname}} {{user.lastname}}</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table">
+                            <tr>
+                                <td>Username</td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>UserId</td>
+                                <td>{{user.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{user.phone ? user.phone : "EMPTY"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>{{user.authorities[0].authority}}</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>{{user.enabled ? "ACTIVE" : "NOT ACTIVE"}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary">UPDATE</button>
+        <button mat-raised-button color="accent">DELETE</button>
+    </mat-card-actions>
+</mat-card>
