@@ -40,13 +40,20 @@
         Logout
         <mat-icon>logout</mat-icon>
     </a>
-    <button
+<!--     <button
         *ngIf="isLoggedIn"
         class="example-icon favorite-icon ml20"
         routerLink="/admin/profile"
         mat-button
         aria-label="Example icon-button with heart icon"
         >
+        {{user.username}}
+    </button> -->
+    <button
+        class="ml20"
+        *ngIf="isLoggedIn"
+        routerLink="/admin/profile"
+        mat-raised-button matBadge="7" >
         {{user.username}}
     </button>
 </mat-toolbar>
