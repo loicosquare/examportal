@@ -1,5 +1,6 @@
 package com.exam;
 
+import com.exam.helper.UserFoundException;
 import com.exam.model.Role;
 import com.exam.model.User;
 import com.exam.model.UserRole;
@@ -39,29 +40,32 @@ public class ExamServerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Starting code");
+		try {
+			System.out.println("Starting code");
 
-		User user = new User();
-		user.setFirstname("admin");
-		user.setLastname("admin");
-		user.setUsername("admin");
-		user.setPassword(this.bCryptPasswordEncoder.encode("admin"));
-		user.setEmail("loicsan07@gmail.com");
-		user.setProfile("default.png");
+			User user = new User();
+			user.setFirstname("admin");
+			user.setLastname("admin");
+			user.setUsername("admin");
+			user.setPassword(this.bCryptPasswordEncoder.encode("admin"));
+			user.setEmail("loicsan07@gmail.com");
+			user.setProfile("default.png");
 
-		Role role1 = new Role();
-		role1.setRoleId(44L);
-		role1.setRoleName("ADMIN");
+			Role role1 = new Role();
+			role1.setRoleId(44L);
+			role1.setRoleName("ADMIN");
 
-		Set<UserRole> userRoleSet = new HashSet<>();
-		UserRole userRole = new UserRole();
-		userRole.setRole(role1);
-		userRole.setUser(user);
-		userRoleSet.add(userRole);
+			Set<UserRole> userRoleSet = new HashSet<>();
+			UserRole userRole = new UserRole();
+			userRole.setRole(role1);
+			userRole.setUser(user);
+			userRoleSet.add(userRole);
 
-		User user1 = this.userService.createUser(user, userRoleSet);
-		System.out.println(user1);
-
+			User user1 = this.userService.createUser(user, userRoleSet);
+			System.out.println(user1);
+		}catch (UserFoundException e){
+			e.printStackTrace();
+		}
 	}
 
 	@Bean
