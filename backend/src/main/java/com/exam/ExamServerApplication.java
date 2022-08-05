@@ -17,6 +17,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -29,6 +30,9 @@ public class ExamServerApplication implements CommandLineRunner {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ExamServerApplication.class, args);
 	}
@@ -37,11 +41,11 @@ public class ExamServerApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Starting code");
 
-		/*User user = new User();
+		User user = new User();
 		user.setFirstname("admin");
 		user.setLastname("admin");
 		user.setUsername("admin");
-		user.setPassword("admin");
+		user.setPassword(this.bCryptPasswordEncoder.encode("admin"));
 		user.setEmail("loicsan07@gmail.com");
 		user.setProfile("default.png");
 
@@ -56,7 +60,7 @@ public class ExamServerApplication implements CommandLineRunner {
 		userRoleSet.add(userRole);
 
 		User user1 = this.userService.createUser(user, userRoleSet);
-		System.out.println(user1);*/
+		System.out.println(user1);
 
 	}
 
