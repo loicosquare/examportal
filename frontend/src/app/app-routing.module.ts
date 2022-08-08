@@ -10,6 +10,8 @@ import { AdminGuard } from './services/guard/admin.guard';
 import { NormalGuard } from './services/guard/normal.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent, pathMatch: 'full' },
@@ -19,9 +21,8 @@ const routes: Routes = [
   {
     path: 'admin',
     component: DashboardComponent,
-    pathMatch: 'full',
     canActivate: [AdminGuard],
-    children: [
+    children:[
       {
         path: '',
         component: WelcomeComponent,
@@ -29,6 +30,14 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'categories',
+        component: ViewCategoriesComponent,
+      },
+      {
+        path: 'add-category',
+        component: AddCategoryComponent,
       },
     ],
   },
@@ -39,25 +48,6 @@ const routes: Routes = [
     canActivate: [NormalGuard],
   },
 ];
-
-/*RouterModule.forChild([
-  {
-    path: 'admin', //parent path
-    component: DashboardComponent,
-    canActivate: [AdminGuard],
-    children: [
-      {
-        path: '',
-        component: WelcomeComponent,
-        pathMatch: 'full',
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-      },
-    ],
-  },
-]);*/
 
 @NgModule({
   declarations: [],
