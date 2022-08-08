@@ -14,4 +14,9 @@ public getAllQuizzes(){
   return this._http.get(`${baseUrl}/quiz/quizzes`);
 }
 
+//Add quiz
+public addQuiz(quiz){
+  return this._http.post(`${baseUrl}/quiz/add`, quiz);
+}
+
 }
