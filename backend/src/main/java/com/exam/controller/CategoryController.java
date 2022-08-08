@@ -16,15 +16,15 @@ public class CategoryController {
 
     //add category
     @PostMapping({"/add"})
-    public ResponseEntity<?> addCategory(@RequestBody Category category){
+    public ResponseEntity<Category> addCategory(@RequestBody Category category){
         Category category1 = this.categoryService.addCategory(category);
         return ResponseEntity.ok(category1);
     }
 
     //get category
-    @GetMapping({"/categoryId"})
-    public ResponseEntity<?> getCategory(@PathVariable("categoryId") Long categoryId){
-        return ResponseEntity.ok(this.categoryService.getCategory(categoryId));
+    @GetMapping({"/{categoryId}"})
+    public Category getCategory(@PathVariable("categoryId") Long categoryId){
+        return this.categoryService.getCategory(categoryId);
     }
 
     //get all categories
@@ -35,7 +35,7 @@ public class CategoryController {
 
     //Update category
     @PutMapping({"/update"})
-    public Category updateCategory(Category category){
+    public Category updateCategory(@RequestBody Category category){
         return this.categoryService.updateCategory(category);
     }
 
