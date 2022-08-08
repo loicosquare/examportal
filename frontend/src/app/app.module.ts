@@ -32,7 +32,9 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
 import { NotifierModule } from 'angular-notifier';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ViewQuizzesComponent } from './pages/view-quizzes/view-quizzes.component';
-import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component'; 
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
     MatListModule,
     NotifierModule,
     MatProgressSpinnerModule,
+    MatSlideToggleModule,
+    MatSelectModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

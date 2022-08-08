@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
   selector: 'app-add-quiz',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddQuizComponent implements OnInit {
 
-  constructor() { }
+  categories : any = [];
+
+  constructor(private categorySerbice: CategoryService) { }
 
   ngOnInit(): void {
+    this.categorySerbice.getAllCategories().subscribe({
+      next: (data) => this.categories = data,
+      error: (err: HttpErrorResponse) => alert(err.message)
+    })
   }
 
 }
