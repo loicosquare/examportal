@@ -7,16 +7,21 @@ import baseUrl from '../helper/helper';
 })
 export class QuizService {
 
-constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-//Get all quizzes
-public getAllQuizzes(){
-  return this._http.get(`${baseUrl}/quiz/quizzes`);
-}
+  //Get all quizzes
+  public getAllQuizzes(){
+    return this._http.get(`${baseUrl}/quiz/quizzes`);
+  }
 
-//Add quiz
-public addQuiz(quiz){
-  return this._http.post(`${baseUrl}/quiz/add`, quiz);
-}
+  //Add quiz
+  public addQuiz(quiz){
+    return this._http.post(`${baseUrl}/quiz/add`, quiz);
+  }
+
+  //Delete quiz
+  public deleteQuiz(qId){
+    return this._http.delete(`${baseUrl}/quiz/delete/${qId}`);
+  }
 
 }
