@@ -27,8 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Set<Category> getCategories() {
-        return (LinkedHashSet<Category>)(this.categoryRepository.findAll());
-        /*return (Set<Category>) this.categoryRepository.findAll();*/
+        return new LinkedHashSet<>(this.categoryRepository.findAll());
     }
 
     @Override

@@ -28,9 +28,8 @@ public class QuestionServiceIpml implements QuestionService {
 
     @Override
     public Set<Question> getQuestions() {
-        return (HashSet<Question>)this.questionRepository.findAll();
+        return new HashSet<>(this.questionRepository.findAll());
     }
-
 
     @Override
     public Question getQuestion(Long questionId) {
@@ -40,5 +39,12 @@ public class QuestionServiceIpml implements QuestionService {
     @Override
     public Set<Question> getQuestionsOfQuiz(Quiz quiz) {
         return this.questionRepository.findByQuiz(quiz);
+    }
+
+    @Override
+    public void deleteQuestion(Long questId) {
+        Question question = new Question();
+        question.setQuestId(questId);
+        this.questionRepository.delete(question);
     }
 }

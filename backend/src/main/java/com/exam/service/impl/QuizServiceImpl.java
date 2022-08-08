@@ -27,8 +27,7 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public Set<Quiz> getQuizzes() {
-        /*return new HashSet<>(this.quizRepository.findAll());*/
-        return (HashSet<Quiz>) this.quizRepository.findAll();
+        return new HashSet<>(this.quizRepository.findAll());
     }
 
     @Override

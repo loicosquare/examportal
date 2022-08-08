@@ -59,8 +59,8 @@ public class UserController {
         this.userService.deleteUser(userId);
     }
 
-   /*@ExceptionHandler(UserFoundException.class)
+   @ExceptionHandler(UserFoundException.class)
     public ResponseEntity<?> exceptionHandler(UserFoundException ex){
-        return ex.printStackTrace();
-    }*/
+        return ResponseEntity.ok(ex.getMessage());
+    }
 }

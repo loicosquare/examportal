@@ -26,7 +26,7 @@ public class Quiz {
             mappedBy = "quiz", fetch = FetchType.LAZY, cascade = CascadeType.ALL
     )
     @JsonIgnore
-    private Set<Question> questionSet = new HashSet<>();
+    private Set<Question> question = new HashSet<>();
 
     public Category getCategory() {
         return category;
@@ -71,11 +71,11 @@ public class Quiz {
         this.maxMarks = maxMarks;
     }
 
-    public String getUmberOfQuestions() {
+    public String getNumberOfQuestions() {
         return numberOfQuestions;
     }
 
-    public void setUmberOfQuestions(String umberOfQuestions) {
+    public void setNumberOfQuestions(String umberOfQuestions) {
         this.numberOfQuestions = umberOfQuestions;
     }
 
@@ -87,5 +87,11 @@ public class Quiz {
         this.active = active;
     }
 
+    public Set<Question> getQuestion() {
+        return question;
+    }
 
+    public void setQuestion(Set<Question> question) {
+        this.question = question;
+    }
 }
