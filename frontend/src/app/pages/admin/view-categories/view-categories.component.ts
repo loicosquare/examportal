@@ -14,14 +14,16 @@ export class ViewCategoriesComponent implements OnInit {
   constructor(private _categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.getAllCategories();
+  }
+
+  public getAllCategories(){
     this._categoryService.getAllCategories().subscribe({
-      next: (data : any) => {
+      next: (data: any) => {
         (this.categories = data), console.log(this.categories);
       },
-      error: (error:HttpErrorResponse) => {
-
-      }
-    })
+      error: (error: HttpErrorResponse) => {},
+    });
   }
 
 }

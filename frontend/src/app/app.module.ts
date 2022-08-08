@@ -30,7 +30,9 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { NotifierModule } from 'angular-notifier';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ViewQuizzesComponent } from './pages/view-quizzes/view-quizzes.component';
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component'; 
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     WelcomeComponent,
     ViewCategoriesComponent,
     AddCategoryComponent,
+    ViewQuizzesComponent,
+    AddQuizComponent,
   ],
   imports: [
     BrowserModule,

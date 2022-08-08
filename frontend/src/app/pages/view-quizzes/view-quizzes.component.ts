@@ -1,0 +1,31 @@
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { QuizService } from 'src/app/services/quiz/quiz.service';
+
+@Component({
+  selector: 'app-view-quizzes',
+  templateUrl: './view-quizzes.component.html',
+  styleUrls: ['./view-quizzes.component.css']
+})
+export class ViewQuizzesComponent implements OnInit {
+
+  quizzes : any = [];
+
+  constructor(private quizService: QuizService, private snack : MatSnackBar) { }
+
+  ngOnInit(): void {
+    this.getAllQuizzes();
+  }
+
+  getAllQuizzes(){
+    this.quizService.getAllQuizzes().subscribe({
+      next: (data) => {
+        this.quizzes = data,
+        console.log(this.quizzes)
+      },
+      error: (err: HttpErrorResponse) => this.snack.open(err.message)
+    })
+  }
+
+}

@@ -12,6 +12,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewQuizzesComponent } from './pages/view-quizzes/view-quizzes.component';
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent, pathMatch: 'full' },
@@ -22,7 +24,7 @@ const routes: Routes = [
     path: 'admin',
     component: DashboardComponent,
     canActivate: [AdminGuard],
-    children:[
+    children: [
       {
         path: '',
         component: WelcomeComponent,
@@ -38,6 +40,14 @@ const routes: Routes = [
       {
         path: 'add-category',
         component: AddCategoryComponent,
+      },
+      {
+        path: 'quizzes',
+        component: ViewQuizzesComponent,
+      },
+      {
+        path: 'add-quiz',
+        component: AddQuizComponent,
       },
     ],
   },
