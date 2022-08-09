@@ -10,14 +10,28 @@
                 </mat-card-header>
                 <mat-card-content>
                     <form class="mt20" (ngSubmit)="addQuestion()">
-                        <mat-form-field class="w100">
+                        <!-- <mat-form-field class="w100">
                             <mat-label>Write question content</mat-label>
                             <textarea
                                 required 
                                 [(ngModel)]="question.content" 
                                 name="content" matInput rows="8" 
                                 placeholder="Enter Here"></textarea>
-                        </mat-form-field>
+                        </mat-form-field> -->
+                        <!-- <ckeditor>
+                            [editor]="Editor"
+                            data="<h1>Question content </h1>"
+                            name="content"
+                            [(ngModel)]="question.content" 
+                        </ckeditor> -->
+                        <ckeditor 
+                            [editor]="Editor" 
+                            data="<p>Hello, world!</p>"
+                            name="content"
+                            [(ngModel)]="question.content"
+                            >
+                        </ckeditor>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field class="w100">

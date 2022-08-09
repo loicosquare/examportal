@@ -41,7 +41,7 @@ export class ViewQuizQuestionsComponent implements OnInit {
         this.questionService.deleteQuestion(questId).subscribe({
           next: (data) => {
             (this.questions = this.questions.filter((quest) => quest.questId != questId)),
-              this.snack.open('Question supprimée avec succès', 'Deleted', {duration: 3000});
+              this.snack.open('Question supprimée avec succès',  'Deleted', {duration: 3000});
           },
           error: (err: HttpErrorResponse) => this.snack.open(err.message, 'Eroor', {duration: 2000}),
         });
