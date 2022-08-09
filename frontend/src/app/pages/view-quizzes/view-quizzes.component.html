@@ -6,7 +6,7 @@
     </mat-card-header>
     <mat-card-content>{{q.description}}</mat-card-content>
     <mat-card-actions>
-        <button mat-flat-button color="accent">Questions</button>
+        <button mat-flat-button color="accent" [routerLink]="'/admin/view-qiestions/' +q.qId + '/' + q.title">Questions</button>
         <button mat-stroked-button color="accent" class="ml20">Max Marks: {{q.maxMarks}}</button>
         <button mat-stroked-button color="accent" class="ml20">Questions: {{q.numberOfQuestions}}</button>
         <button mat-flat-button [routerLink]="'/admin/quiz/' + q.qId" color="accent" class="ml20">Update</button>
