@@ -7,5 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface QuizRepository extends JpaRepository<Quiz, Long> {
-    public List<Quiz> findBycategory(Category category); //findBy-- category doit etre écrit comme c'est mappé dans l'objet quiz+
+    public List<Quiz> findBycategory(Category category); //findBy-- category doit etre écrit comme c'est mappé dans l'objet quiz
+
+    public List<Quiz> findByActive(Boolean b);
+
+    public List<Quiz> findByCategoryAndActive(Category c, Boolean b);
 }
