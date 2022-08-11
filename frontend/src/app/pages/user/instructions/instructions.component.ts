@@ -12,6 +12,11 @@ export class InstructionsComponent implements OnInit {
 
   qid;
   quiz;
+  /*ma modification;*/
+  title = '';
+  description = '';
+  numberOfQuestions;
+  maxMarks;
 
   constructor(private _route: ActivatedRoute, private quizService: QuizService) { }
 
@@ -19,8 +24,13 @@ export class InstructionsComponent implements OnInit {
     this.qid = this._route.snapshot.params['qid'];
 
     this.quizService.getOneQuiz(this.qid).subscribe({
-      next: (data) => {
-        this.quiz = data
+      next: (data : any) => {
+        this.quiz = data,
+        this.title = this.quiz['title'],
+        this.description = this.quiz['description'],
+        this.numberOfQuestions = this.quiz['numberOfQuestions'],
+        this.maxMarks = this.quiz['maxMarks'],
+        console.log("quiz", this.title , this.description)
       },
       error: (err:HttpErrorResponse) => alert(err.message)
     })
