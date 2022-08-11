@@ -8,7 +8,7 @@
                 <ng-container *ngIf="loadedQuestions">
                     <h1 class="mt20">On going Quiz <b>{{ loadedQuestions[0].quiz.title }}</b></h1>
                 </ng-container>
-                <mat-card *ngFor="let q of loadedQuestions; let i = index;">
+                <mat-card *ngFor="let q of loadedQuestions; let i = index">
                     <mat-card-content>
                         <p>
                             <b>Q {{ i + 1 }}</b>
@@ -21,7 +21,7 @@
                             <input
                                 type="radio"
                                 [value]="q.option1"
-                                name="i"
+                                [name]="q.qid+i"
                                 [(ngModel)]="q.givenAnswer"
                             >
                             {{q.option1}}
@@ -30,7 +30,7 @@
                             <input
                                 type="radio"
                                 [value]="q.option2"
-                                name="i"
+                                [name]="q.qid+i"
                                 [(ngModel)]="q.givenAnswer"
                             >
                             {{q.option2}}
@@ -41,7 +41,7 @@
                             <input
                                 type="radio"
                                 [value]="q.option3"
-                                name="i"
+                                [name]="q.qid+i"
                                 [(ngModel)]="q.givenAnswer"
                             >
                             {{q.option3}}
@@ -50,7 +50,7 @@
                             <input
                                 type="radio"
                                 [value]="q.option4"
-                                name="i"
+                                [name]="q.qid+i"
                                 [(ngModel)]="q.givenAnswer"
                             >
                             {{q.option4}}
