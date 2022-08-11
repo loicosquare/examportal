@@ -9,8 +9,13 @@ export class QuestionService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  //Get one question of quiz
+  //Get question of one quiz
   public getOneQuestionOfQuiz(qId){
+    return this._httpClient.get(`${baseUrl}/question/quiz/${qId}`);
+  }
+
+  //Get question of on quiz on page start
+  public getOneQuestionOfQuizForTest(qId){
     return this._httpClient.get(`${baseUrl}/question/quiz/${qId}`);
   }
 

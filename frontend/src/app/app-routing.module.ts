@@ -19,6 +19,7 @@ import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/vi
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/user/start/start.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent, pathMatch: 'full' },
@@ -81,9 +82,18 @@ const routes: Routes = [
       {
         path: 'instructions/:qid',
         component: InstructionsComponent
+      },
+      {
+        path: 'start/:qid',
+        component:StartComponent 
       }
     ]
   },
+  {
+    path: 'start/:qid',
+    component:StartComponent,
+    canActivate: [NormalGuard],
+  }
 ];
 
 @NgModule({

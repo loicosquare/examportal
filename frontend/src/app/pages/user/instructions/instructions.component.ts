@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from 'src/app/services/quiz/quiz.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-instructions',
@@ -18,7 +19,7 @@ export class InstructionsComponent implements OnInit {
   numberOfQuestions;
   maxMarks;
 
-  constructor(private _route: ActivatedRoute, private quizService: QuizService) { }
+  constructor(private _route: ActivatedRoute, private quizService: QuizService, private router: Router) { }
 
   ngOnInit(): void {
     this.qid = this._route.snapshot.params['qid'];
@@ -29,10 +30,26 @@ export class InstructionsComponent implements OnInit {
         this.title = this.quiz['title'],
         this.description = this.quiz['description'],
         this.numberOfQuestions = this.quiz['numberOfQuestions'],
-        this.maxMarks = this.quiz['maxMarks'],
-        console.log("quiz", this.title , this.description)
+        this.maxMarks = this.quiz['maxMarks']
       },
       error: (err:HttpErrorResponse) => alert(err.message)
+    })
+  }
+
+  startQuiz(){
+    Swal.fire({
+      title: 'Do you want to start the quiz ?',
+      showCancelButton: true,
+      confirmButtonText: 'Start',
+      denyButtonText: 'D\'on start',
+      icon: 'info',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        /*this.router.navigateByUrl('/start/'+this.qid);*/ //meme chose
+        this.router.navigate(['/start/'+this.qid]);
+      } else {
+        return;
+      }
     })
   }
 
