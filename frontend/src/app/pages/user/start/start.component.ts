@@ -14,6 +14,10 @@ export class StartComponent implements OnInit {
 
   qid;
   loadedQuestions;
+  marksGot = 0;
+  correctAnswers = 0;
+  attempted = 0;
+  isSubmit = false;
 
   constructor(private locationStrategy: LocationStrategy, private _route: ActivatedRoute, private questionService: QuestionService) { }
 
@@ -34,9 +38,41 @@ export class StartComponent implements OnInit {
   loadQuestions(){
     this.questionService.getOneQuestionOfQuizForTest(this.qid).subscribe({
       next: (data) => {
-        this.loadedQuestions = data
+        this.loadedQuestions = data,
+        this.loadedQuestions.forEach(q => {
+          q['givenAnswer'] = ''; //J'ajoute un champ pour chaque question de l'objet qui contiendra la réponse choisie par le user.
+        });
       },
       error: (err: HttpErrorResponse) => Swal.fire('Error', err.message)
+    })
+  }
+
+  submitQuiz(){
+    
+    Swal.fire({
+      title: 'Do you want to submit the quiz ?',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      icon: 'info',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.loadedQuestions.forEach(q => {
+
+          this.isSubmit = !this.isSubmit;
+
+          if(q.givenAnswer == q.answer){
+            this.correctAnswers++;
+            let marksSingle = this.loadedQuestions[0].quiz.maxMarks / this.loadedQuestions.length;
+            this.marksGot += marksSingle;
+          }
+
+          if(q.givenAnswer.trim() != ''){
+            this.attempted++;
+          }
+        });
+      } else {
+        return;
+      }
     })
   }
 

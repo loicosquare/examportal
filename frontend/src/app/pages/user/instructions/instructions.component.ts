@@ -41,7 +41,6 @@ export class InstructionsComponent implements OnInit {
       title: 'Do you want to start the quiz ?',
       showCancelButton: true,
       confirmButtonText: 'Start',
-      denyButtonText: 'D\'on start',
       icon: 'info',
     }).then((result) => {
       if (result.isConfirmed) {
