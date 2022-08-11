@@ -13,11 +13,12 @@ import { QuestionService } from '../../../services/question/question.service';
 export class StartComponent implements OnInit {
 
   qid;
-  loadedQuestions;
+  questions;
   marksGot = 0;
   correctAnswers = 0;
   attempted = 0;
   isSubmit = false;
+  timer: any;
 
   constructor(private locationStrategy: LocationStrategy, private _route: ActivatedRoute, private questionService: QuestionService) { }
 
@@ -38,10 +39,14 @@ export class StartComponent implements OnInit {
   loadQuestions(){
     this.questionService.getOneQuestionOfQuizForTest(this.qid).subscribe({
       next: (data) => {
-        this.loadedQuestions = data,
-        this.loadedQuestions.forEach(q => {
+        this.questions = data,
+        this.timer = this.questions.length * 2 * 60;
+
+        this.questions.forEach(q => {
           q['givenAnswer'] = ''; //J'ajoute un champ pour chaque question de l'objet qui contiendra la réponse choisie par le user.
         });
+
+        this.startTimer();
       },
       error: (err: HttpErrorResponse) => Swal.fire('Error', err.message)
     })
@@ -56,24 +61,44 @@ export class StartComponent implements OnInit {
       icon: 'info',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.loadedQuestions.forEach(q => {
-
-          this.isSubmit = !this.isSubmit;
-
-          if(q.givenAnswer == q.answer){
-            this.correctAnswers++;
-            let marksSingle = this.loadedQuestions[0].quiz.maxMarks / this.loadedQuestions.length;
-            this.marksGot += marksSingle;
-          }
-
-          if(q.givenAnswer.trim() != ''){
-            this.attempted++;
-          }
-        });
+        this.evalQuiz();
       } else {
         return;
       }
     })
   }
 
+  startTimer(){
+    let t = window.setInterval(() => {
+      if(this.timer <= 0){
+        this.evalQuiz();
+        clearInterval(t);
+      }else{
+        this.timer--;
+      }
+    }, 1000)
+  }
+
+  getFormattedTime(){
+    let mm = Math.floor(this.timer / 60);
+    let ss = this.timer - mm * 60;
+    return `${mm} min : ${ss} sec`;
+  }
+
+  evalQuiz(){
+    this.questions.forEach(q => {
+
+      this.isSubmit = !this.isSubmit;
+
+      if(q.givenAnswer == q.answer){
+        this.correctAnswers++;
+        let marksSingle = this.questions[0].quiz.maxMarks / this.questions.length;
+        this.marksGot += marksSingle;
+      }
+
+      if(q.givenAnswer.trim() != ''){
+        this.attempted++;
+      }
+    });
+  }
 }
