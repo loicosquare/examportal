@@ -44,6 +44,7 @@ import { SidebarComponent as UserSideBar} from './pages/user/sidebar/sidebar.com
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/user/start/start.component';
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from "ngx-ui-loader";
 
 @NgModule({
   declarations: [
@@ -89,7 +90,11 @@ import { StartComponent } from './pages/user/start/start.component';
     MatProgressSpinnerModule,
     MatSlideToggleModule,
     MatSelectModule,
-    CKEditorModule
+    CKEditorModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    })
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

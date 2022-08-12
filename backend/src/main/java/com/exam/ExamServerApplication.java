@@ -44,11 +44,11 @@ public class ExamServerApplication implements CommandLineRunner {
 			System.out.println("Starting code");
 
 			User user = new User();
-			user.setFirstname("admin");
-			user.setLastname("admin");
-			user.setUsername("admin");
-			user.setPassword(this.bCryptPasswordEncoder.encode("admin"));
-			user.setEmail("loicsan07@gmail.com");
+			user.setFirstname("armel");
+			user.setLastname("armel");
+			user.setUsername("armel");
+			user.setPassword(this.bCryptPasswordEncoder.encode("armel"));
+			user.setEmail("armel@gmail.com");
 			user.setProfile("default.png");
 
 			Role role1 = new Role();
