@@ -89,7 +89,6 @@ export class StartComponent implements OnInit {
 
   evalQuiz(){
     this.questions.forEach(q => {
-      console.log(this.isSubmit);
       this.isSubmit = true;
 
       if(q.givenAnswer == q.answer){
