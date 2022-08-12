@@ -88,8 +88,7 @@ export class StartComponent implements OnInit {
   }
 
   evalQuiz(){
-    this.questions.forEach(q => {
-      /*console.log(q);*/
+    /*this.questions.forEach(q => {
       console.log(this.isSubmit);
       this.isSubmit = true;
 
@@ -103,7 +102,7 @@ export class StartComponent implements OnInit {
       if(q.givenAnswer.trim() != ''){
         this.attempted++;
       }
-    });
+    });*/
   }
 
   printPage(){
