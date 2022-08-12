@@ -40,7 +40,7 @@ public class ExamServerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		try {
+		/*try {
 			System.out.println("Starting code");
 
 			User user = new User();
@@ -65,7 +65,7 @@ public class ExamServerApplication implements CommandLineRunner {
 			System.out.println(user1);
 		}catch (UserFoundException e){
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	@Bean

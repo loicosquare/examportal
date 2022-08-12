@@ -28,4 +28,8 @@ export class QuestionService {
     return this._httpClient.delete(`${baseUrl}/question/delete/${questionId}`);
   }
 
+  public evalQuiz(questions){
+    return this._httpClient.post(`${baseUrl}/question/eval-quiz/`, questions)
+  }
+
 }

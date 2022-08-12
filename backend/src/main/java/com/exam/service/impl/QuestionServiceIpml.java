@@ -47,4 +47,9 @@ public class QuestionServiceIpml implements QuestionService {
         question.setQuestId(questId);
         this.questionRepository.delete(question);
     }
+
+    /*@Override
+    public Question get(Long questionId) {
+        return this.questionRepository.getOne(questionId);
+    }*/
 }
