@@ -14,6 +14,7 @@ export class StartComponent implements OnInit {
 
   qid;
   questions;
+  questionsLength;
   marksGot = 0;
   correctAnswers = 0;
   attempted = 0;
@@ -38,9 +39,10 @@ export class StartComponent implements OnInit {
 
   loadQuestions(){
     this.questionService.getOneQuestionOfQuizForTest(this.qid).subscribe({
-      next: (data) => {
+      next: (data : any) => {
         this.questions = data,
         this.timer = this.questions.length * 2 * 60;
+        this.questionsLength = data.length;
 
         this.questions.forEach(q => {
           q['givenAnswer'] = ''; //J'ajoute un champ pour chaque question de l'objet qui contiendra la réponse choisie par le user.
