@@ -96,11 +96,16 @@ export class StartComponent implements OnInit {
         this.correctAnswers++;
         let marksSingle = this.questions[0].quiz.maxMarks / this.questions.length;
         this.marksGot += marksSingle;
+        this.marksGot = parseFloat(Number(this.marksGot).toFixed(2)); // I want to stop at two number after the comma.
       }
 
       if(q.givenAnswer.trim() != ''){
         this.attempted++;
       }
     });
+  }
+
+  printPage(){
+    window.print();
   }
 }
